@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="LOGS" value="./logs" />
+
+    <!-- Dev (default, no profile specified) -->
+    <springProfile name="default">
+
+        <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <!--<appender name="Console" class="com.paul.logdemo.appender.CustomAppender">-->
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>
+                    %cyan(%marker) %black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1}): %msg%n%throwable
+                </Pattern>
+            </layout>
+            <encoder>
+                <pattern>[%marker] [%thread] %highlight(%-5level) %cyan(%logger{15}) -%kvp -%msg %n</pattern>
+            </encoder>
+        </appender>
+
+        <root level="INFO">
+            <appender-ref ref="Console"/>
+        </root>
+
+    </springProfile>
+
+</configuration>
